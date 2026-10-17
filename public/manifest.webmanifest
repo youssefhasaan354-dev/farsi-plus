@@ -1,0 +1,23 @@
+{
+  "name": "فارسي بلس | Farsi Plus",
+  "short_name": "فارسي بلس",
+  "description": "تعلم اللغة الفارسية من الصفر إلى الاحتراف بطريقة تفاعلية وممتعة للناطقين بالعربية.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0d7377",
+  "theme_color": "#0d7377",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/og-image.png",
+      "sizes": "1200x630",
+      "type": "image/png"
+    }
+  ]
+}

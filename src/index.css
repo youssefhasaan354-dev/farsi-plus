@@ -1,0 +1,134 @@
+/* ─── Fonts: Cairo & Vazirmatn (Arabic + Latin only, weights 400, 600, 700) ─── */
+@import '@fontsource/cairo/arabic-400.css';
+@import '@fontsource/cairo/latin-400.css';
+@import '@fontsource/cairo/arabic-600.css';
+@import '@fontsource/cairo/latin-600.css';
+@import '@fontsource/cairo/arabic-700.css';
+@import '@fontsource/cairo/latin-700.css';
+
+@import '@fontsource/vazirmatn/arabic-400.css';
+@import '@fontsource/vazirmatn/latin-400.css';
+@import '@fontsource/vazirmatn/arabic-600.css';
+@import '@fontsource/vazirmatn/latin-600.css';
+@import '@fontsource/vazirmatn/arabic-700.css';
+@import '@fontsource/vazirmatn/latin-700.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Base ───────────────────────────────────────────────────────── */
+@layer base {
+  :root {
+    --color-bg: 255 253 240;       /* ivory-100 */
+    --color-surface: 255 254 249;  /* ivory-50 */
+    --color-text: 26 23 20;        /* neutral-900 */
+    --color-text-muted: 122 112 100; /* neutral-500 */
+    --color-border: 232 228 222;   /* neutral-200 */
+  }
+
+  .dark {
+    --color-bg: 13 11 9;           /* ink */
+    --color-surface: 26 23 20;     /* ink-soft */
+    --color-text: 245 243 240;     /* neutral-50 */
+    --color-text-muted: 168 158 143; /* neutral-400 */
+    --color-border: 46 41 34;      /* neutral-800 */
+  }
+
+  html {
+    -webkit-tap-highlight-color: transparent;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: rgb(var(--color-bg));
+    color: rgb(var(--color-text));
+    font-family: 'Cairo', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  /* Persian text always uses Vazirmatn and RTL */
+  [lang='fa'],
+  .font-persian {
+    font-family: 'Vazirmatn', 'Cairo', sans-serif;
+    direction: rtl;
+  }
+
+  /* Focus styles for keyboard accessibility */
+  *:focus-visible {
+    outline: 2px solid rgb(13 115 119);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  /* Scrollbar styling */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgb(var(--color-border));
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgb(var(--color-text-muted));
+  }
+}
+
+/* ─── Components ─────────────────────────────────────────────────── */
+@layer components {
+  .surface {
+    background-color: rgb(var(--color-surface));
+    color: rgb(var(--color-text));
+  }
+
+  .surface-border {
+    border: 1px solid rgb(var(--color-border));
+  }
+
+  .text-muted {
+    color: rgb(var(--color-text-muted));
+  }
+
+  .bg-app {
+    background-color: rgb(var(--color-bg));
+  }
+}
+
+/* ─── Utilities ──────────────────────────────────────────────────── */
+@layer utilities {
+  /* Persian geometric pattern background (girih-inspired) */
+  .pattern-girih {
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%230d7377' stroke-opacity='0.04' stroke-width='1'%3E%3Cpath d='M30 0 L60 30 L30 60 L0 30 Z'/%3E%3Cpath d='M30 10 L50 30 L30 50 L10 30 Z'/%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  .pattern-girih-dark {
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%2333bbbb' stroke-opacity='0.06' stroke-width='1'%3E%3Cpath d='M30 0 L60 30 L30 60 L0 30 Z'/%3E%3Cpath d='M30 10 L50 30 L30 50 L10 30 Z'/%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  .pattern-dots {
+    background-image: radial-gradient(circle, rgb(var(--color-border)) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  /* Safe area padding for mobile */
+  .safe-top {
+    padding-top: env(safe-area-inset-top);
+  }
+  .safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
